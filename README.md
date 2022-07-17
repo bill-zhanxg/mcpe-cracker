@@ -1,5 +1,5 @@
 # MCPE Cracker
-> A small tool for automatic cracking Minecraft for Windows Edition
+> A small tool for automatic cracking `Minecraft for Windows Edition`
 
 
 **I do not suggestion play on a cracked Minecraft, use this at your own risk!**
