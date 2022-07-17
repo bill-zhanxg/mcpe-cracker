@@ -1,4 +1,4 @@
-**MCPE Cracker**
+# MCPE Cracker
 > A small tool for automatic cracking Minecraft for Windows Edition
 
 
