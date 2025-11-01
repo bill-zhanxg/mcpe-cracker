@@ -72,19 +72,13 @@ namespace MCPECracker.Forms
             }
 
             // Only replace if we have the resource
-            if (x64Resource != null || x86Resource != null)
+            byte[] file = Environment.Is64BitOperatingSystem ? x64Resource : x86Resource;
+            if (file != null)
             {
                 try
                 {
                     label.Text = $"Replacing {Path.GetFileName(dllPath)} with a new one...";
-                    byte[] file;
-                    if (Environment.Is64BitOperatingSystem) file = x64Resource;
-                    else file = x86Resource;
-                    
-                    if (file != null)
-                    {
-                        File.WriteAllBytes(dllPath, file);
-                    }
+                    File.WriteAllBytes(dllPath, file);
                     progressBar1.Value = ++progressValue;
                 }
                 catch
@@ -93,6 +87,11 @@ namespace MCPECracker.Forms
                     close.Show();
                     return false;
                 }
+            }
+            else
+            {
+                // No resource available, just increment progress
+                progressBar1.Value = ++progressValue;
             }
             
             return true;
