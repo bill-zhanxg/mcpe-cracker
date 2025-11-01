@@ -15,7 +15,7 @@ This program is written in C# WinForm. Previously, it replaced the `Windows.Appl
 
 To use this tool with the new SDK method, you may need to obtain the appropriate cracked `GamingServices.dll` files (x64 and x86 versions) and add them to the `Resources` folder. See [GAMING_SERVICES_SETUP.md](GAMING_SERVICES_SETUP.md) for detailed instructions.
 
-**This program does not work for `Minecraft Java Edition`**.I personally don't know how to crack it, but all you need to have is Xbox Game Pass to be able to play `Minecraft Java Edition`!
+**This program does not work for `Minecraft Java Edition`**. I personally don't know how to crack it, but all you need to have is Xbox Game Pass to be able to play `Minecraft Java Edition`!
 
 <br />
 

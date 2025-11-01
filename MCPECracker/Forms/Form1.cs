@@ -100,10 +100,13 @@ namespace MCPECracker.Forms
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            progressBar1.Maximum = 8; // Increased for handling both DLLs
+            // Each DLL requires 4 steps: takeown, kill processes, delete, replace
+            const int stepsPerDll = 4;
+            const int numberOfDlls = 2;
+            progressBar1.Maximum = stepsPerDll * numberOfDlls;
             int progressValue = 0;
             
-            // Process Windows Store DLL (legacy support)
+            // Process Windows Store DLL (legacy support for older Minecraft versions)
             if (!ProcessDllFile(storePath, 
                 Properties.Resources.Windows_ApplicationModel_Store, 
                 Properties.Resources.Windows_ApplicationModel_Store_x86, 
@@ -112,8 +115,11 @@ namespace MCPECracker.Forms
                 return;
             }
 
-            // Process Gaming Services DLL (new SDK method)
-            // Note: GamingServices resources need to be added separately
+            // Process Gaming Services DLL (new SDK method for current Minecraft versions)
+            // NOTE: GamingServices resources are not yet available. See GAMING_SERVICES_SETUP.md
+            // for instructions on adding the cracked Gaming Services DLL files.
+            // Until resources are added, this will only remove the existing GamingServices.dll
+            // but will not replace it with a cracked version.
             if (!ProcessDllFile(gamingServicesPath, 
                 null, // Properties.Resources.GamingServices when available
                 null, // Properties.Resources.GamingServices_x86 when available
