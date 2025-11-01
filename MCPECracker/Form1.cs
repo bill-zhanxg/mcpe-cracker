@@ -70,17 +70,29 @@ namespace MCPECracker
             form.Show();
         }
 
-        private void btnRevert_Click(object sender, EventArgs e)
+        private void RunSystemFileChecker(string filePath)
         {
-            string path = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.System), "Windows.ApplicationModel.Store.dll");
             Process process = new Process
             {
-                StartInfo = new ProcessStartInfo("cmd.exe", $"/c sfc /scanfile={path}")
+                StartInfo = new ProcessStartInfo("cmd.exe", $"/c sfc /scanfile={filePath}")
+                {
+                    CreateNoWindow = true
+                }
             };
-            process.StartInfo.CreateNoWindow = true;
             process.Start();
             process.WaitForExit();
-            MessageBox.Show($"Revert all changes for \"{path}\"!");
+        }
+
+        private void btnRevert_Click(object sender, EventArgs e)
+        {
+            string storePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.System), "Windows.ApplicationModel.Store.dll");
+            string gamingServicesPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.System), "GamingServices.dll");
+            
+            // Revert both DLLs using System File Checker
+            RunSystemFileChecker(storePath);
+            RunSystemFileChecker(gamingServicesPath);
+            
+            MessageBox.Show($"Revert all changes for both DLLs:\n\"{storePath}\"\n\"{gamingServicesPath}\"");
         }
     }
 }
