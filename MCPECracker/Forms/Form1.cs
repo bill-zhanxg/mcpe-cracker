@@ -119,6 +119,7 @@ namespace MCPECracker.Forms
             // for instructions on adding the cracked Gaming Services DLL files.
             // Until resources are added, this will only remove the existing GamingServices.dll
             // but will not replace it with a cracked version.
+            bool hasGamingServicesResources = false; // Change to true after adding resources
             if (!ProcessDllFile(gamingServicesPath, 
                 null, // Properties.Resources.GamingServices when available
                 null, // Properties.Resources.GamingServices_x86 when available
@@ -127,7 +128,14 @@ namespace MCPECracker.Forms
                 return;
             }
 
-            label.Text = "Successfully cracked your MCPE, relaunch Minecraft for Windows to play the full version!";
+            if (!hasGamingServicesResources && File.Exists(gamingServicesPath))
+            {
+                label.Text = "Note: Gaming Services resources not available. See GAMING_SERVICES_SETUP.md for newer Minecraft versions.";
+            }
+            else
+            {
+                label.Text = "Successfully cracked your MCPE, relaunch Minecraft for Windows to play the full version!";
+            }
             close.Show();
         }
 

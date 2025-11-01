@@ -2,7 +2,7 @@
 > A small tool for automatic cracking `Minecraft for Windows Edition`
 
 
-**I do not suggestion play on a cracked Minecraft, use this at your own risk!**
+**I do not suggest playing on a cracked Minecraft, use this at your own risk!**
 
 This program is written in C# WinForm. Previously, it replaced the `Windows.ApplicationModel.Store.dll` in `C:\Windows\System32` with a cracked one. However, **Minecraft Bedrock Edition has switched to using Gaming Services SDK** for licensing, which requires additional steps.
 
